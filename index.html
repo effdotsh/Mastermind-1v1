@@ -1,8 +1,23 @@
 <head>
-    <title>P2P Test</title>
-
+  <title>P2P Test</title>
+  <link rel="stylesheet" href="main.css" />
 </head>
 <body>
-    <script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>
-    <script src="test.js"></script>
+  <script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>
+  <script src="test.js"></script>
+  <script src="formManager.js"></script>
+
+  <p id="gameCode"></p>
+
+  <form id="joinGame" action="javascript:void(0);" onsubmit="connectForm()">
+    <input type="text" name="gameCode" value="" />
+    <input type="submit" value="Join Game" />
+  </form>
+
+  <p id="chatLog"></p>
+
+  <form id="sendMessage" action="javascript:void(0);" onsubmit="sendMessage()">
+    <input type="text" name="mssg" value="" />
+    <input type="submit" value="Send" />
+  </form>
 </body>

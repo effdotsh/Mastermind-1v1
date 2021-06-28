@@ -2,13 +2,22 @@ let peer = new Peer();
 let conn;
 
 peer.on("open", function (id) {
-  console.log("My peer ID is: " + id);
+  document.getElementById("gameCode").innerHTML = `Connection Code: ${id}`;
 });
 
 let c_open = () => {
   console.log("OPENED CONNECTION");
-  conn.on("data", function (data) {
-    console.log(data);
+
+  //hide join and display send
+  document.getElementById("gameCode").style.display = "none";
+  document.getElementById("joinGame").style.display = "none";
+  document.getElementById("chatLog").style.display = "inherit";
+  document.getElementById("sendMessage").style.display = "inherit";
+
+  conn.on("data", function (message) {
+    document.getElementById(
+      "chatLog"
+    ).innerHTML += `<b>Them:</b> ${message} <br />`;
   });
 };
 
@@ -26,5 +35,9 @@ function connect(destID) {
 }
 
 function send(message) {
+  document.getElementById(
+    "chatLog"
+  ).innerHTML += `<b>Me:</b> ${message} <br />`;
+
   conn.send(message);
 }

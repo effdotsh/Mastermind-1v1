@@ -1,0 +1,13 @@
+#gameCode {
+  display: inherit;
+}
+#joinGame {
+  display: inherit;
+}
+
+#chatLog {
+  display: none;
+}
+#sendMessage {
+  display: none;
+}

@@ -8,5 +8,11 @@ peer.on('open', function(id) {
 
     var conn = peer.connect(destID);
 
+    conn.on('open', function() {
+        
+        alert("OPENED CONNECTION")
+      });
 
   }
+
+  peer.on('connection', function(conn) { alert("CONNECTION RECIEVED") });

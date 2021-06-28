@@ -1,17 +1,11 @@
 #gameCode {
-  display: inherit;
-}
-#joinGame {
-  display: inherit;
-}
-
-#chatLog {
   display: none;
 }
-#chatLog p {
-  display: inline;
+#joinGame {
+  display: none;
 }
-#sendMessage {
+
+#hostSettings {
   display: none;
 }
 
@@ -33,8 +27,6 @@
   padding-bottom: 1vw;
   font-size: var(--font-size);
   border-radius: 100px;
-
-  filter: drop-shadow(1px 4px 1px black);
 }
 .button:hover {
   /* color: #000000; */

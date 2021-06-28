@@ -15,9 +15,7 @@ let c_open = () => {
   document.getElementById("sendMessage").style.display = "inherit";
 
   conn.on("data", function (message) {
-    document.getElementById(
-      "chatLog"
-    ).innerHTML += `<b>Them:</b> ${message} <br />`;
+    addMessage(`Them`, message);
   });
 };
 
@@ -35,9 +33,17 @@ function connect(destID) {
 }
 
 function send(message) {
-  document.getElementById(
-    "chatLog"
-  ).innerHTML += `<b>Me:</b> ${message} <br />`;
+  addMessage("Me", message);
 
   conn.send(message);
+}
+
+function addMessage(author, msg) {
+  let chat = document.getElementById("chatLog");
+  var user = document.createElement("b");
+  var text = document.createElement("p");
+  user.innerText = `\n ${author}: `;
+  text.innerText = msg;
+  chat.appendChild(user);
+  chat.appendChild(text);
 }

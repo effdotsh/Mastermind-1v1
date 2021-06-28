@@ -8,6 +8,9 @@
 #chatLog {
   display: none;
 }
+#chatLog p {
+  display: inline;
+}
 #sendMessage {
   display: none;
 }

@@ -3,9 +3,11 @@
   <link rel="stylesheet" href="main.css" />
 </head>
 <body>
-  <script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>
-  <script src="test.js"></script>
-  <script src="formManager.js"></script>
+  <!-- Host or Join -->
+  <div class="buttons">
+    <div id="hostButton" class="button">Host</div>
+    <div id="joinButton" class="button">Join</div>
+  </div>
 
   <p id="gameCode"></p>
 
@@ -20,4 +22,9 @@
     <input type="text" name="mssg" value="" />
     <input type="submit" value="Send" />
   </form>
+
+  <script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>
+  <script src="test.js"></script>
+  <script src="formManager.js"></script>
+  <script src="joinHostMenu.js"></script>
 </body>

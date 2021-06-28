@@ -14,3 +14,29 @@
 #sendMessage {
   display: none;
 }
+
+.buttons {
+  display: inherit;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-around;
+  width: 50%;
+  text-align: center;
+}
+.button {
+  cursor: pointer;
+  color: azure;
+  background-color: rgb(114, 23, 79);
+  width: 30%;
+  text-decoration: none;
+  padding-top: 1vw;
+  padding-bottom: 1vw;
+  font-size: var(--font-size);
+  border-radius: 100px;
+
+  filter: drop-shadow(1px 4px 1px black);
+}
+.button:hover {
+  /* color: #000000; */
+  background-color: #ca0a5a;
+}

@@ -14,6 +14,7 @@ let c_open = () => {
     if (message === "connected") {
       console.log("sent");
       conn.send(gameSettings);
+      revealID("gameBoard");
     }
   });
 };
@@ -29,6 +30,7 @@ function connect(destID) {
   conn.on("open", function () {
     c_open();
     conn.send("connected");
+    revealID("gameBoard");
   });
 }
 

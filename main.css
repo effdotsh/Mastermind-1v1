@@ -1,12 +1,15 @@
 #gameCode {
   display: none;
+  margin: 0 auto;
 }
 #joinGame {
   display: none;
+  margin: 0 auto;
 }
 
 #hostSettings {
   display: none;
+  margin: 0 auto;
 }
 
 .buttons {
@@ -31,4 +34,8 @@
 .button:hover {
   /* color: #000000; */
   background-color: #ca0a5a;
+}
+#gameBoard {
+  display: table;
+  margin: 0 auto;
 }

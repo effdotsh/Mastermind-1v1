@@ -115,6 +115,11 @@ function displayPins() {
         pinRadius / 4
       );
     }
+    if (check[0] == gameSettings.codeLength) {
+      conn.send({ type: "done", data: 50 });
+      alert("You Win!");
+      resetBoard();
+    }
   }
 }
 function keyPressed() {
@@ -133,8 +138,6 @@ function checkRow(r) {
     codeGraph[c]++;
   }
 
-  // console.log(guessGraph);
-  // console.log(codeGraph);
   let softHit = 0;
   let hardHit = 0;
   for (let c = 0; c < guessGraph.length; c++) {
@@ -158,4 +161,12 @@ function incIfFull() {
     }
   }
   currentRow++;
+}
+
+function resetBoard() {
+  currentRow = 0;
+  pins = new Array(int(gameSettings.numGuesses)).fill(-1);
+  for (let r = 0; r < pins.length; r++) {
+    pins[r] = new Array(int(gameSettings.codeLength)).fill(-1);
+  }
 }

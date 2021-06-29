@@ -6,12 +6,15 @@ peer.on("open", function (id) {
 });
 
 let c_open = () => {
-  //hide join and display send
   hideID("gameCode");
   hideID("joinGame");
 
   conn.on("data", function (message) {
     console.log(message);
+    if (message === "connected") {
+      console.log("sent");
+      conn.send(gameSettings);
+    }
   });
 };
 
@@ -25,6 +28,7 @@ function connect(destID) {
 
   conn.on("open", function () {
     c_open();
+    conn.send("connected");
   });
 }
 

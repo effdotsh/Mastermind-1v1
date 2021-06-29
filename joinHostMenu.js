@@ -1,6 +1,8 @@
 let gameSettings = {
   codeLength: 4,
   numGuesses: 10,
+  pinTypes: 8,
+  code: [0, 0, 0, 0],
 };
 
 var joinButton = document.getElementById("joinButton");
@@ -20,7 +22,23 @@ hostButton.onclick = function () {
 };
 
 function hostSettings() {
-  var x = document.getElementById("sendMessage").elements;
+  var x = document.getElementById("hostSettings").elements;
+  gameSettings.codeLength = x.codeLength.value;
+  gameSettings.numGuesses = x.maxGuesses.value;
+
+  gameSettings.code = createCode(
+    gameSettings.codeLength,
+    gameSettings.pinTypes
+  );
+
   hideID("hostSettings");
   revealID("gameCode");
+}
+
+function createCode(len, pinTypes) {
+  let code = [];
+  for (let c = 0; c < len; c++) {
+    code.push(Math.floor(Math.random() * pinTypes));
+  }
+  return code;
 }

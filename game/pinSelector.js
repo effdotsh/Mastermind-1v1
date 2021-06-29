@@ -71,7 +71,7 @@ function mousePressed() {
           (p * pg.width) /
             (gameSettings.codeLength + 2) /
             (gameSettings.codeLength / 4),
-        150 + r * 2 * pinRadius
+        150 + (r * 1200) / gameSettings.numGuesses
       ) < pinRadius &&
       selectedPin != -1
     ) {
@@ -97,7 +97,7 @@ function displayPins() {
           (p * pg.width) /
             (gameSettings.codeLength + 2) /
             (gameSettings.codeLength / 4),
-        150 + r * 2 * pinRadius,
+        150 + (r * 1200) / gameSettings.numGuesses,
         pinRadius,
         pinRadius
       );
@@ -116,7 +116,7 @@ function displayPins() {
       }
       pg.ellipse(
         size[0] - pinRadius - (pinRadius / 2) * p,
-        150 + (pins.length - 1 - r) * 2 * pinRadius,
+        150 + ((pins.length - 1 - r) * 1200) / gameSettings.numGuesses,
         pinRadius / 4,
         pinRadius / 4
       );

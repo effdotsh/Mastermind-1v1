@@ -133,9 +133,11 @@ function checkRow(r) {
     codeGraph[c]++;
   }
 
+  // console.log(guessGraph);
+  // console.log(codeGraph);
   let softHit = 0;
   let hardHit = 0;
-  for (let c = 0; c < pins[r].length; c++) {
+  for (let c = 0; c < guessGraph.length; c++) {
     softHit += Math.min(guessGraph[c], codeGraph[c]);
   }
 
@@ -146,7 +148,7 @@ function checkRow(r) {
     }
   }
 
-  return [hardHit, max(softHit, 0)];
+  return [hardHit, softHit];
 }
 
 function incIfFull() {

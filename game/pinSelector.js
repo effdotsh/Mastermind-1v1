@@ -67,7 +67,7 @@ function mousePressed() {
       dist(
         mouseX,
         mouseY,
-        pg.width / 8 + (p * pg.width) / 6,
+        pg.width / 8 + (p * pg.width) / (gameSettings.codeLength + 2),
         150 + r * 2 * pinRadius
       ) < pinRadius &&
       selectedPin != -1
@@ -90,7 +90,7 @@ function displayPins() {
         pg.fill(0);
       }
       pg.ellipse(
-        pg.width / 8 + (p * pg.width) / 6,
+        pg.width / 8 + (p * pg.width) / (gameSettings.codeLength + 2),
         150 + r * 2 * pinRadius,
         pinRadius,
         pinRadius
@@ -165,8 +165,9 @@ function incIfFull() {
 
 function resetBoard() {
   currentRow = 0;
-  pins = new Array(int(gameSettings.numGuesses)).fill(-1);
+  pins = new Array(gameSettings.numGuesses).fill(-1);
   for (let r = 0; r < pins.length; r++) {
-    pins[r] = new Array(int(gameSettings.codeLength)).fill(-1);
+    pins[r] = new Array(gameSettings.codeLength).fill(-1);
   }
+  pinRadius = (60 * 4) / gameSettings.codeLength;
 }

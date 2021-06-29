@@ -17,6 +17,7 @@ let c_open = () => {
     } else if (message.type === "settings") {
       console.log("sent");
       gameSettings = message.data;
+      resetBoard();
     } else {
       console.log(message);
     }

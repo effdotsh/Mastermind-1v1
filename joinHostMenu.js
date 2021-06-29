@@ -19,13 +19,13 @@ hostButton.onclick = function () {
 
   joinButton.style.display = "none";
   hostButton.style.display = "none";
-  hostSettings();
+  // hostSettings();
 };
 
 function hostSettings() {
   var x = document.getElementById("hostSettings").elements;
-  gameSettings.codeLength = x.codeLength.value;
-  gameSettings.numGuesses = x.maxGuesses.value;
+  gameSettings.codeLength = int(x.codeLength.value);
+  gameSettings.numGuesses = int(x.maxGuesses.value);
 
   gameSettings.code = createCode(
     gameSettings.codeLength,
@@ -34,6 +34,7 @@ function hostSettings() {
 
   hideID("hostSettings");
   revealID("gameCode");
+  resetBoard();
 }
 
 function createCode(len, pinTypes) {

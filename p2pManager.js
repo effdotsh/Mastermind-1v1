@@ -13,8 +13,12 @@ let c_open = () => {
     console.log(message);
     if (message.type === "connected") {
       console.log("sent");
-      conn.send(gameSettings);
+      conn.send({ type: "settings", data: gameSettings });
       revealID("gameBoard");
+    }
+    if (message.type === "settings") {
+      console.log("sent");
+      gameSettings = message.data;
     }
   });
 };

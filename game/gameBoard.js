@@ -34,7 +34,7 @@ function draw() {
   pg.line(20, size[1] - 220, size[0] - 20, size[1] - 220);
 
   displayPinChoices();
-  displayChoices();
+  displayPins();
 }
 
 function mouse() {

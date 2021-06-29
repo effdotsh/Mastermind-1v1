@@ -56,7 +56,6 @@ function mousePressed() {
     }
   }
   if (selectedPin != -1) {
-    console.log(selectedPin);
     cursor(`cursors/${selectedPin}.png`, 16, 16);
   }
   ///////////////
@@ -73,17 +72,17 @@ function mousePressed() {
       ) < pinRadius &&
       selectedPin != -1
     ) {
-      pins[r][p] = selectedPin;
+      pins[currentRow][p] = selectedPin;
     }
   }
 }
 
-function displayChoices() {
+function displayPins() {
   for (let row = 0; row < pins.length; row++) {
-    let r = pins.length - row - 1;
+    let r = row;
     for (let p = 0; p < pins[r].length; p++) {
-      if (pins[r][p] != -1) {
-        pg.fill(pinColors[pins[r][p]]);
+      if (pins[pins.length - 1 - row][p] != -1) {
+        pg.fill(pinColors[pins[pins.length - 1 - row][p]]);
       } else {
         pg.fill(0);
       }
@@ -95,4 +94,43 @@ function displayChoices() {
       );
     }
   }
+}
+function keyPressed() {
+  if (key === " ") {
+    checkRow();
+  }
+}
+function checkRow() {
+  for (p of pins[currentRow]) {
+    if (p === -1) {
+      alert("hi");
+      return;
+    }
+  }
+  let guessGraph = new Array(8).fill(0);
+  let codeGraph = new Array(8).fill(0);
+
+  for (let c of pins[currentRow]) {
+    guessGraph[c]++;
+  }
+  for (let c of gameSettings.code) {
+    codeGraph[c]++;
+  }
+
+  let softHit = 0;
+  let hardHit = 0;
+  for (let c = 0; c < pins[currentRow].length; c++) {
+    softHit += Math.min(guessGraph[c], codeGraph[c]);
+  }
+
+  for (let c = 0; c < pins[currentRow].length; c++) {
+    if (pins[currentRow][c] === gameSettings.code[c]) {
+      hardHit++;
+      softHit--;
+    }
+  }
+  console.log(guessGraph);
+  console.log(codeGraph);
+  console.log(hardHit, softHit);
+  currentRow++;
 }

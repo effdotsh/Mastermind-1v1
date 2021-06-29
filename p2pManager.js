@@ -11,7 +11,7 @@ let c_open = () => {
 
   conn.on("data", function (message) {
     console.log(message);
-    if (message === "connected") {
+    if (message.type === "connected") {
       console.log("sent");
       conn.send(gameSettings);
       revealID("gameBoard");
@@ -29,7 +29,7 @@ function connect(destID) {
 
   conn.on("open", function () {
     c_open();
-    conn.send("connected");
+    conn.send({ type: "connected", data: {} });
     revealID("gameBoard");
   });
 }

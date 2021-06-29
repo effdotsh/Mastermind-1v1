@@ -19,6 +19,7 @@ hostButton.onclick = function () {
 
   joinButton.style.display = "none";
   hostButton.style.display = "none";
+  hostSettings();
 };
 
 function hostSettings() {

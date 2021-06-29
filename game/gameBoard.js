@@ -14,6 +14,8 @@ let pinColors = [
   "#d0d3da",
 ];
 
+let pins = [];
+
 function setup() {
   size = [800, 1600];
   scaler = min((windowWidth * 0.9) / size[0], (windowHeight * 0.9) / size[1]);
@@ -21,12 +23,18 @@ function setup() {
   cnv.parent("gameBoard");
   pg = createGraphics(size[0], size[1]);
   ellipseMode(RADIUS);
+  for (let i = 0; i < gameSettings.numGuesses; i++) {
+    pins.push([-1, -1, -1, -1]);
+  }
 }
 function draw() {
   image(pg, 0, 0, size[0] * scaler, size[1] * scaler);
   pg.background("#c78660");
 
-  displayPins();
+  pg.line(20, size[1] - 220, size[0] - 20, size[1] - 220);
+
+  displayPinChoices();
+  displayChoices();
 }
 
 function mouse() {

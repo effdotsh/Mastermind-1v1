@@ -1,6 +1,8 @@
 let pinRadius = 60;
 let selectedPin = -1;
-function displayPins() {
+let currentRow = 0;
+
+function displayPinChoices() {
   for (let c = 0; c < 8; c++) {
     pg.fill(pinColors[c]);
     if (c < 4) {
@@ -54,5 +56,23 @@ function mousePressed() {
   if (selectedPin != -1) {
     console.log(selectedPin);
     cursor(`cursors/${selectedPin}.png`, 16, 16);
+  }
+}
+
+function displayChoices() {
+  for (let r = 0; r < pins.length; r++) {
+    for (let p = 0; p < pins[r].length; p++) {
+      if (pins[r][p] != -1) {
+        pg.fill(pinColors[pins[r][p]]);
+      } else {
+        pg.fill(0);
+      }
+      pg.ellipse(
+        pg.width / 8 + (p * pg.width) / 6,
+        150 + r * 2 * pinRadius,
+        pinRadius,
+        pinRadius
+      );
+    }
   }
 }

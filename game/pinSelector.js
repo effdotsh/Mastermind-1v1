@@ -67,8 +67,11 @@ function mousePressed() {
       dist(
         mouseX,
         mouseY,
-        pg.width / 8 + (p * pg.width) / 6,
-        150 + r * 2 * pinRadius
+        pg.width / 8 +
+          (p * pg.width) /
+            (gameSettings.codeLength + 2) /
+            (gameSettings.codeLength / 4),
+        150 + (r * 1200) / gameSettings.numGuesses
       ) < pinRadius &&
       selectedPin != -1
     ) {
@@ -90,8 +93,11 @@ function displayPins() {
         pg.fill(0);
       }
       pg.ellipse(
-        pg.width / 8 + (p * pg.width) / 6,
-        150 + r * 2 * pinRadius,
+        pg.width / 8 +
+          (p * pg.width) /
+            (gameSettings.codeLength + 2) /
+            (gameSettings.codeLength / 4),
+        150 + (r * 1200) / gameSettings.numGuesses,
         pinRadius,
         pinRadius
       );
@@ -110,10 +116,15 @@ function displayPins() {
       }
       pg.ellipse(
         size[0] - pinRadius - (pinRadius / 2) * p,
-        150 + (pins.length - 1 - r) * 2 * pinRadius,
+        150 + ((pins.length - 1 - r) * 1200) / gameSettings.numGuesses,
         pinRadius / 4,
         pinRadius / 4
       );
+    }
+    if (check[0] == gameSettings.codeLength) {
+      conn.send({ type: "done", data: 50 });
+      alert("You Win!");
+      resetBoard();
     }
   }
 }
@@ -133,8 +144,6 @@ function checkRow(r) {
     codeGraph[c]++;
   }
 
-  // console.log(guessGraph);
-  // console.log(codeGraph);
   let softHit = 0;
   let hardHit = 0;
   for (let c = 0; c < guessGraph.length; c++) {
@@ -158,4 +167,13 @@ function incIfFull() {
     }
   }
   currentRow++;
+}
+
+function resetBoard() {
+  currentRow = 0;
+  pins = new Array(gameSettings.numGuesses).fill(-1);
+  for (let r = 0; r < pins.length; r++) {
+    pins[r] = new Array(gameSettings.codeLength).fill(-1);
+  }
+  pinRadius = 60 - 10 * (gameSettings.codeLength - 4);
 }

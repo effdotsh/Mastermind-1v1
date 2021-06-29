@@ -10,15 +10,16 @@ let c_open = () => {
   hideID("joinGame");
 
   conn.on("data", function (message) {
-    console.log(message);
     if (message.type === "connected") {
       console.log("sent");
       conn.send({ type: "settings", data: gameSettings });
       revealID("gameBoard");
-    }
-    if (message.type === "settings") {
+    } else if (message.type === "settings") {
       console.log("sent");
       gameSettings = message.data;
+      resetBoard();
+    } else {
+      console.log(message);
     }
   });
 };

@@ -187,6 +187,7 @@ function startGame() {
   rematchSent = false;
   timer = -3000;
   resetBoard();
+  lastTime = Date.now();
 }
 
 function endGame() {

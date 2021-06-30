@@ -84,6 +84,13 @@ function mousePressed() {
 }
 
 function displayPins() {
+  pg.fill(255);
+  pg.ellipse(
+    20,
+    150 + ((pins.length - 1 - currentRow) * 1200) / gameSettings.numGuesses,
+    10,
+    10
+  );
   //////////////////
   // Display Pins //
   //////////////////

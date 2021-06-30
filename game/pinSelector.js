@@ -2,6 +2,8 @@ let pinRadius = 60;
 let selectedPin = -1;
 let currentRow = 0;
 
+let gameInProgress = false;
+
 function displayPinChoices() {
   for (let c = 0; c < 8; c++) {
     pg.fill(pinColors[c]);
@@ -26,56 +28,58 @@ function displayPinChoices() {
 function mousePressed() {
   let mouseX = mouse()[0];
   let mouseY = mouse()[1];
-  ////////////////
-  // Select pin //
-  ////////////////
-  for (let c = 0; c < 8; c++) {
-    pg.fill(pinColors[c]);
-    if (c < 4) {
-      if (
-        dist(
-          pg.width / 8 + (c * pg.width) / 4,
-          size[1] - 2.5 * pinRadius,
-          mouseX,
-          mouseY
-        ) <= pinRadius
-      ) {
-        selectedPin = c;
-      }
-    } else {
-      if (
-        dist(
-          pg.width / 8 + ((c - 4) * pg.width) / 4,
-          size[1] - pinRadius,
-          mouseX,
-          mouseY
-        ) <= pinRadius
-      ) {
-        selectedPin = c;
+  if (gameInProgress) {
+    ////////////////
+    // Select pin //
+    ////////////////
+    for (let c = 0; c < 8; c++) {
+      pg.fill(pinColors[c]);
+      if (c < 4) {
+        if (
+          dist(
+            pg.width / 8 + (c * pg.width) / 4,
+            size[1] - 2.5 * pinRadius,
+            mouseX,
+            mouseY
+          ) <= pinRadius
+        ) {
+          selectedPin = c;
+        }
+      } else {
+        if (
+          dist(
+            pg.width / 8 + ((c - 4) * pg.width) / 4,
+            size[1] - pinRadius,
+            mouseX,
+            mouseY
+          ) <= pinRadius
+        ) {
+          selectedPin = c;
+        }
       }
     }
-  }
-  if (selectedPin != -1) {
-    cursor(`cursors/${selectedPin}.png`, 16, 16);
-  }
-  ///////////////
-  // Place Pin //
-  ///////////////
-  let r = pins.length - 1 - currentRow;
-  for (let p = 0; p < pins[r].length; p++) {
-    if (
-      dist(
-        mouseX,
-        mouseY,
-        pg.width / 8 +
-          (p * pg.width) /
-            (gameSettings.codeLength + 2) /
-            (gameSettings.codeLength / 4),
-        150 + (r * 1200) / gameSettings.numGuesses
-      ) < pinRadius &&
-      selectedPin != -1
-    ) {
-      pins[currentRow][p] = selectedPin;
+    if (selectedPin != -1) {
+      cursor(`cursors/${selectedPin}.png`, 16, 16);
+    }
+    ///////////////
+    // Place Pin //
+    ///////////////
+    let r = pins.length - 1 - currentRow;
+    for (let p = 0; p < pins[r].length; p++) {
+      if (
+        dist(
+          mouseX,
+          mouseY,
+          pg.width / 8 +
+            (p * pg.width) /
+              (gameSettings.codeLength + 2) /
+              (gameSettings.codeLength / 4),
+          150 + (r * 1200) / gameSettings.numGuesses
+        ) < pinRadius &&
+        selectedPin != -1
+      ) {
+        pins[currentRow][p] = selectedPin;
+      }
     }
   }
 }
@@ -176,4 +180,9 @@ function resetBoard() {
     pins[r] = new Array(gameSettings.codeLength).fill(-1);
   }
   pinRadius = 60 - 10 * (gameSettings.codeLength - 4);
+}
+
+function startGame() {
+  timer = -3;
+  resetBoard();
 }

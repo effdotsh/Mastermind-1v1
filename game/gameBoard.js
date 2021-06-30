@@ -17,16 +17,20 @@ let pinColors = [
 
 let pins = [];
 
+let timer = -3000;
+let lastTime = Date.now();
+
 function setup() {
   size = [800, 1600];
   scaler = min((windowWidth * 0.9) / size[0], (windowHeight * 0.9) / size[1]);
   cnv = createCanvas(size[0] * scaler, size[1] * scaler);
   cnv.parent("gameBoard");
   pg = createGraphics(size[0], size[1]);
-  ellipseMode(RADIUS);
+  pg.textAlign(CENTER);
   for (let i = 0; i < gameSettings.numGuesses; i++) {
     pins.push([-1, -1, -1, -1]);
   }
+  pg.stroke(0);
 }
 function draw() {
   image(pg, 0, 0, size[0] * scaler, size[1] * scaler);
@@ -36,6 +40,26 @@ function draw() {
 
   displayPinChoices();
   displayPins();
+  if (timer < 0) {
+    gameInProgress = false;
+    pg.strokeWeight(5);
+    pg.fill(255);
+    pg.textSize(400);
+    pg.text(Math.ceil(-timer / 1000), size[0] / 2, size[1] / 2);
+  } else {
+    gameInProgress = true;
+  }
+
+  if (gameInProgress) {
+    pg.strokeWeight(1);
+    pg.fill(255);
+    pg.textSize(60);
+    pg.text((timer / 1000).toFixed(1), size[0] / 2, 75);
+    pg.strokeWeight(2);
+  }
+  timer += Date.now() - lastTime;
+  lastTime = Date.now();
+  pg.strokeWeight(2);
 }
 
 function mouse() {

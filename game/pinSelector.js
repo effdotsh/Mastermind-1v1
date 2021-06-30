@@ -193,4 +193,12 @@ function startGame() {
 function endGame() {
   conn.send({ type: "rematch" });
   rematchSent = true;
+
+  if (gameSettings.isHost) {
+    gameSettings.code = createCode(
+      gameSettings.codeLength,
+      gameSettings.pinTypes
+    );
+    conn.send({ type: "settings", data: gameSettings });
+  }
 }

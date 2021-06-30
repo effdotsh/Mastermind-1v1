@@ -39,6 +39,7 @@ function draw() {
 
   displayPinChoices();
   displayPins();
+  pg.textAlign(CENTER);
   if (timer < 0) {
     gameInProgress = false;
     pg.strokeWeight(5);
@@ -54,17 +55,31 @@ function draw() {
     pg.fill(255);
     pg.textSize(60);
     pg.text((timer / 1000).toFixed(1), size[0] / 2, 75);
-    pg.strokeWeight(2);
   }
   if (!rematchSent) {
     timer += Date.now() - lastTime;
     lastTime = Date.now();
   }
-  pg.strokeWeight(2);
 
   if (rematchSent && rematchReceived) {
     startGame();
   }
+
+  ////////////////////
+  // Display Scores //
+  ////////////////////
+  pg.textSize(40);
+  pg.strokeWeight(1);
+
+  pg.textAlign(LEFT);
+  pg.fill(255);
+  pg.text(gameSettings.myPoints, 100, 75);
+
+  pg.textAlign(RIGHT);
+  pg.fill(255);
+  pg.text(gameSettings.theirPoints, size[0] - 100, 75);
+
+  pg.strokeWeight(2);
 }
 
 function mouse() {

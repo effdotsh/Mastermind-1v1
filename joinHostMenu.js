@@ -5,6 +5,7 @@ let gameSettings = {
   code: [0, 0, 0, 0],
   myPoints: 0,
   theirPoints: 0,
+  isHost: true,
 };
 
 var joinButton = document.getElementById("joinButton");

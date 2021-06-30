@@ -3,7 +3,6 @@ let selectedPin = -1;
 let currentRow = 0;
 
 let gameInProgress = false;
-
 function displayPinChoices() {
   for (let c = 0; c < 8; c++) {
     pg.fill(pinColors[c]);
@@ -125,10 +124,11 @@ function displayPins() {
         pinRadius / 4
       );
     }
-    if (check[0] == gameSettings.codeLength) {
-      conn.send({ type: "done", data: 50 });
-      alert("You Win!");
-      resetBoard();
+    if (check[0] == gameSettings.codeLength && !rematchSent) {
+      conn.send({ type: "done", data: timer });
+      alert(`You Win - Time Elapsed: ${(timer / 1000).toFixed(1)}`);
+      gameSettings.myPoints++;
+      endGame();
     }
   }
 }
@@ -183,6 +183,13 @@ function resetBoard() {
 }
 
 function startGame() {
+  rematchReceived = false;
+  rematchSent = false;
   timer = -3000;
   resetBoard();
+}
+
+function endGame() {
+  conn.send({ type: "rematch" });
+  rematchSent = true;
 }

@@ -4,7 +4,8 @@ let conn;
 peer.on("open", function (id) {
   document.getElementById("gameCode").innerText = `Connection Code: ${id}`;
 });
-
+let rematchSent = false;
+let rematchReceived = false;
 let c_open = () => {
   hideID("gameCode");
   hideID("joinGame");
@@ -18,9 +19,14 @@ let c_open = () => {
     } else if (message.type === "settings") {
       console.log("sent");
       gameSettings = message.data;
+      gameSettings.isHost = !gameSettings.isHost;
       resetBoard();
-    } else {
-      console.log(message);
+    } else if (message.type === "done") {
+      alert(`You Lose - Time Elapsed: ${(message.data / 1000).toFixed(1)}`);
+      gameSettings.theirPoints++;
+      endGame();
+    } else if (message.type === "rematch") {
+      rematchReceived = true;
     }
   });
 };
@@ -39,8 +45,4 @@ function connect(destID) {
     revealID("gameBoard");
     startGame();
   });
-}
-
-function send(message) {
-  conn.send(message);
 }

@@ -56,9 +56,15 @@ function draw() {
     pg.text((timer / 1000).toFixed(1), size[0] / 2, 75);
     pg.strokeWeight(2);
   }
-  timer += Date.now() - lastTime;
-  lastTime = Date.now();
+  if (!rematchSent) {
+    timer += Date.now() - lastTime;
+    lastTime = Date.now();
+  }
   pg.strokeWeight(2);
+
+  if (rematchSent && rematchReceived) {
+    startGame();
+  }
 }
 
 function mouse() {

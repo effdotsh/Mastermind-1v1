@@ -3,6 +3,8 @@ let gameSettings = {
   numGuesses: 10,
   pinTypes: 8,
   code: [0, 0, 0, 0],
+  myPoints: 0,
+  theirPoints: 0,
 };
 
 var joinButton = document.getElementById("joinButton");

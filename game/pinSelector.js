@@ -183,6 +183,6 @@ function resetBoard() {
 }
 
 function startGame() {
-  timer = -3;
+  timer = -3000;
   resetBoard();
 }

@@ -14,6 +14,7 @@ let c_open = () => {
       console.log("sent");
       conn.send({ type: "settings", data: gameSettings });
       revealID("gameBoard");
+      startGame();
     } else if (message.type === "settings") {
       console.log("sent");
       gameSettings = message.data;
@@ -36,6 +37,7 @@ function connect(destID) {
     c_open();
     conn.send({ type: "connected", data: {} });
     revealID("gameBoard");
+    startGame();
   });
 }
 

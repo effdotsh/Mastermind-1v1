@@ -135,6 +135,7 @@ function displayPins() {
       conn.send({ type: "done", data: timer });
       alert(`You Win - Time Elapsed: ${(timer / 1000).toFixed(1)}`);
       gameSettings.myPoints++;
+
       endGame();
     }
   }

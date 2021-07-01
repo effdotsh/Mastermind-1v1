@@ -20,10 +20,15 @@ let c_open = () => {
       console.log("sent");
       gameSettings = message.data;
       gameSettings.isHost = !gameSettings.isHost;
+      gameSettings.myPoints = [
+        gameSettings.theirPoints,
+        (gameSettings.theirPoints = gameSettings.myPoints),
+      ][0];
       resetBoard();
     } else if (message.type === "done") {
       alert(`You Lose - Time Elapsed: ${(message.data / 1000).toFixed(1)}`);
       gameSettings.theirPoints++;
+
       endGame();
     } else if (message.type === "rematch") {
       rematchReceived = true;

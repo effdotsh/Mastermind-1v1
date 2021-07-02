@@ -132,7 +132,9 @@ function displayPins() {
       );
     }
     if (check[0] == gameSettings.codeLength && !rematchSent) {
-      conn.send({ type: "done", data: timer });
+      if (!gameSettings.isSinglePlayer) {
+        conn.send({ type: "done", data: timer });
+      }
       alert(`You Win - Time Elapsed: ${(timer / 1000).toFixed(1)}`);
       gameSettings.myPoints++;
 
@@ -199,14 +201,19 @@ function startGame() {
 }
 
 function endGame() {
-  conn.send({ type: "rematch" });
-  rematchSent = true;
-
   if (gameSettings.isHost) {
     gameSettings.code = createCode(
       gameSettings.codeLength,
       gameSettings.pinTypes
     );
+  }
+  if (!gameSettings.isSinglePlayer) {
     conn.send({ type: "settings", data: gameSettings });
+
+    conn.send({ type: "rematch" });
+    rematchSent = true;
+  } else {
+    resetBoard();
+    startGame();
   }
 }

@@ -6,6 +6,7 @@ let gameSettings = {
   myPoints: 0,
   theirPoints: 0,
   isHost: true,
+  isSinglePlayer: false,
 };
 
 var joinButton = document.getElementById("joinButton");
@@ -35,9 +36,15 @@ function hostSettings() {
     gameSettings.pinTypes
   );
 
+  gameSettings.isSinglePlayer = Boolean(x.isSinglePlayer.value);
   hideID("hostSettings");
-  revealID("gameCode");
   resetBoard();
+  if (!gameSettings.isSinglePlayer) {
+    revealID("gameCode");
+  } else {
+    revealID("gameBoard");
+    startGame();
+  }
 }
 
 function createCode(len, pinTypes) {

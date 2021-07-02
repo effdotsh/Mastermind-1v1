@@ -75,11 +75,13 @@ function draw() {
   pg.fill(255);
   pg.text(gameSettings.myPoints, 100, 75);
 
-  pg.textAlign(RIGHT);
-  pg.fill(255);
-  pg.text(gameSettings.theirPoints, size[0] - 100, 75);
+  if (!gameSettings.isSinglePlayer) {
+    pg.textAlign(RIGHT);
+    pg.fill(255);
+    pg.text(gameSettings.theirPoints, size[0] - 100, 75);
 
-  pg.strokeWeight(2);
+    pg.strokeWeight(2);
+  }
 }
 
 function mouse() {

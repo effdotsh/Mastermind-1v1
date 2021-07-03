@@ -36,7 +36,8 @@ function hostSettings() {
     gameSettings.pinTypes
   );
 
-  gameSettings.isSinglePlayer = Boolean(x.isSinglePlayer.value);
+  gameSettings.isSinglePlayer = Boolean(x.isSinglePlayer.checked);
+  console.log(gameSettings.isSinglePlayer);
   hideID("hostSettings");
   resetBoard();
   if (!gameSettings.isSinglePlayer) {

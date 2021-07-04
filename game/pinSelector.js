@@ -4,7 +4,7 @@ let currentRow = 0;
 
 let gameInProgress = false;
 function displayPinChoices() {
-  for (let c = 0; c < 8; c++) {
+  for (let c = 0; c < gameSettings.numColors; c++) {
     pg.fill(pinColors[c]);
     if (c < 4) {
       pg.ellipse(
@@ -31,7 +31,7 @@ function mousePressed() {
     ////////////////
     // Select pin //
     ////////////////
-    for (let c = 0; c < 8; c++) {
+    for (let c = 0; c < gameSettings.numColors; c++) {
       pg.fill(pinColors[c]);
       if (c < 4) {
         if (
@@ -148,8 +148,8 @@ function keyPressed() {
   }
 }
 function checkRow(r) {
-  let guessGraph = new Array(8).fill(0);
-  let codeGraph = new Array(8).fill(0);
+  let guessGraph = new Array(gameSettings.numColors).fill(0);
+  let codeGraph = new Array(gameSettings.numColors).fill(0);
 
   for (let c of pins[r]) {
     guessGraph[c]++;
@@ -204,7 +204,7 @@ function endGame() {
   if (gameSettings.isHost) {
     gameSettings.code = createCode(
       gameSettings.codeLength,
-      gameSettings.pinTypes
+      gameSettings.numColors
     );
   }
   if (!gameSettings.isSinglePlayer) {

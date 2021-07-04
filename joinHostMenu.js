@@ -1,7 +1,7 @@
 let gameSettings = {
   codeLength: 4,
   numGuesses: 10,
-  pinTypes: 8,
+  numColors: 8,
   code: [0, 0, 0, 0],
   myPoints: 0,
   theirPoints: 0,
@@ -29,11 +29,13 @@ hostButton.onclick = function () {
 function hostSettings() {
   var x = document.getElementById("hostSettings").elements;
   gameSettings.codeLength = int(x.codeLength.value);
+  gameSettings.numColors = int(x.numColors.value);
+
   gameSettings.numGuesses = int(x.maxGuesses.value);
 
   gameSettings.code = createCode(
     gameSettings.codeLength,
-    gameSettings.pinTypes
+    gameSettings.numColors
   );
 
   gameSettings.isSinglePlayer = Boolean(x.isSinglePlayer.checked);
@@ -48,10 +50,10 @@ function hostSettings() {
   }
 }
 
-function createCode(len, pinTypes) {
+function createCode(len, numColors) {
   let code = [];
   for (let c = 0; c < len; c++) {
-    code.push(Math.floor(Math.random() * pinTypes));
+    code.push(Math.floor(Math.random() * numColors));
   }
   return code;
 }

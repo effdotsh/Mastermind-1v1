@@ -197,12 +197,13 @@ function startGame() {
   rematchSent = false;
   timer = -3000;
   resetBoard();
+  gameSettings.code = gameSettings.nextCode;
   lastTime = Date.now();
 }
 
 function endGame() {
   if (gameSettings.isHost) {
-    gameSettings.code = createCode(
+    gameSettings.nextCode = createCode(
       gameSettings.codeLength,
       gameSettings.numColors
     );

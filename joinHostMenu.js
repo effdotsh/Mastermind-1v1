@@ -2,6 +2,7 @@ let gameSettings = {
   codeLength: 4,
   numGuesses: 10,
   numColors: 8,
+  nextCode: [0, 0, 0, 0],
   code: [0, 0, 0, 0],
   myPoints: 0,
   theirPoints: 0,
@@ -33,7 +34,7 @@ function hostSettings() {
 
   gameSettings.numGuesses = int(x.maxGuesses.value);
 
-  gameSettings.code = createCode(
+  gameSettings.nextCode = createCode(
     gameSettings.codeLength,
     gameSettings.numColors
   );

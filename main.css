@@ -1,5 +1,6 @@
 body {
-  background: rgb(34, 40, 49);
+  background: #1d1d1d;
+
   /* 
   background: linear-gradient(
     90deg,
@@ -16,8 +17,9 @@ body {
   justify-content: space-around;
   width: 100%;
   text-align: center;
-  background: rgb(34, 40, 49);
+  background: #1d1d1d;
   /* background: white; */
+  color: #131313;
 }
 
 #gameCode {
@@ -41,11 +43,12 @@ body {
   justify-content: space-around;
   width: 50%;
   text-align: center;
+  font-size: 1.25vw;
 }
 
 .button {
   cursor: pointer;
-  color: azure;
+  color: #131313;
 
   text-decoration: none;
   padding-top: 1vw;
@@ -53,19 +56,19 @@ body {
   width: 30%;
 
   background-color: #f93939;
-  color: #fff;
   border-radius: 100px;
 
   background-image: linear-gradient(
     45deg,
-    rgba(109, 124, 255, 1) 0%,
-    rgba(147, 109, 255, 1) 57%,
-    rgba(255, 109, 228, 1) 100%
+    #b50717 0%,
+    #cf291d 90%,
+    #cf291d 100%
   );
   background-size: 300%;
   background-position: left;
 
   transition: 300ms background-position ease-in-out;
+  font-family: "Work Sans", sans-serif;
 }
 .button:hover {
   background-position: right;
@@ -105,12 +108,7 @@ p {
 }
 
 h1 {
-  background: linear-gradient(
-    45deg,
-    rgba(109, 124, 255, 1) 0%,
-    rgba(147, 109, 255, 1) 57%,
-    rgba(255, 109, 228, 1) 100%
-  );
-  font-family: "Work Sans", sans-serif;
+  background: linear-gradient(45deg, #b50717 0%, #cf291d 57%, #b50717 100%);
   font-size: 5vw;
+  font-family: "Work Sans", sans-serif;
 }

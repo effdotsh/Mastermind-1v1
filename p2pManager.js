@@ -24,6 +24,7 @@ let c_open = () => {
         gameSettings.theirPoints,
         (gameSettings.theirPoints = gameSettings.myPoints),
       ][0];
+      gameSettings.code = gameSettings.nextCode;
       resetBoard();
     } else if (message.type === "done") {
       alert(`You Lose - Time Elapsed: ${(message.data / 1000).toFixed(1)}`);

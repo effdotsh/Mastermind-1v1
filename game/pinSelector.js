@@ -199,6 +199,7 @@ function startGame() {
   resetBoard();
   gameSettings.code = gameSettings.nextCode;
   lastTime = Date.now();
+  hideID("header");
 }
 
 function endGame() {

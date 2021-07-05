@@ -131,7 +131,11 @@ function displayPins() {
         pinRadius / 4
       );
     }
-    if (check[0] == gameSettings.codeLength && !rematchSent) {
+    if (
+      check[0] == gameSettings.codeLength &&
+      !rematchSent &&
+      !rematchReceived
+    ) {
       if (!gameSettings.isSinglePlayer) {
         conn.send({ type: "done", data: timer });
       }

@@ -3,6 +3,9 @@
   <link rel="stylesheet" href="main.css" />
 </head>
 <body>
+  <!-- Header -->
+  <div class="header"></div>
+
   <!-- Host or Join -->
   <div class="buttons">
     <div id="hostButton" class="button">Host</div>
@@ -15,37 +18,67 @@
     action="javascript:void(0);"
     onsubmit="hostSettings()"
   >
-    Code Length:
-    <input type="number" autocomplete="off" name="codeLength" value="4" /><br />
-    Max Guesses:
-    <input
-      type="number"
-      autocomplete="off"
-      name="maxGuesses"
-      value="10"
-    /><br />
+    <div>
+      <label class="label">Code Length:</label>
+      <input
+        class="input"
+        type="number"
+        autocomplete="off"
+        name="codeLength"
+        value="4"
+      />
+      <div class="break"></div>
 
-    Num Colors:
-    <input
-      type="number"
-      autocomplete="off"
-      id="numColors"
-      min="1"
-      max="8"
-      name="numColors"
-      value="8"
-    /><br />
-    Single Player:
-    <input type="checkbox" autocomplete="off" name="isSinglePlayer" /> <br />
+      <label class="label">Max Guesses:</label>
+      <input
+        class="input"
+        type="number"
+        autocomplete="off"
+        name="maxGuesses"
+        value="10"
+      />
+      <div class="break"></div>
 
-    <input type="submit" value="Create Game" />
+      <label class="label">Num Colors:</label>
+      <input
+        class="input"
+        type="number"
+        autocomplete="off"
+        id="numColors"
+        min="1"
+        max="8"
+        name="numColors"
+        value="8"
+      />
+      <div class="break"></div>
+
+      <label class="label">Single Player:</label>
+      <input
+        class="input"
+        type="checkbox"
+        autocomplete="off"
+        name="isSinglePlayer"
+      />
+      <div class="break"></div>
+
+      <br />
+      <input class="button submit-button" type="submit" value="Create Game" />
+    </div>
   </form>
 
   <!-- Gamecodes -->
   <p id="gameCode"></p>
   <form id="joinGame" action="javascript:void(0);" onsubmit="connectForm()">
-    Game Code: <input type="text" autocomplete="off" name="gameCode" value="" />
-    <input type="submit" value="Join Game" />
+    <label>Game Code:</label>
+    <input
+      type="text"
+      class="input"
+      autocomplete="off"
+      name="gameCode"
+      value=""
+    />
+    <div class="break"></div>
+    <input type="submit" class="button submit-button" value="Join Game" />
   </form>
 
   <!-- Gameboard -->

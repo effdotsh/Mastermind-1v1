@@ -1,3 +1,25 @@
+body {
+  background: rgb(34, 40, 49);
+  /* 
+  background: linear-gradient(
+    90deg,
+    rgba(34, 40, 49, 1) 0%,
+    rgba(34, 40, 49, 1) 29%,
+    rgba(69, 78, 92, 1) 100%
+  ); */
+}
+
+.header {
+  display: inherit;
+  /* margin: 0 auto; */
+  padding-bottom: 50px;
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+  text-align: center;
+  background: rgb(34, 40, 49);
+}
+
 #gameCode {
   display: none;
   margin: 0 auto;
@@ -20,23 +42,80 @@
   width: 50%;
   text-align: center;
 }
+
 .button {
   cursor: pointer;
   color: azure;
-  background-color: rgb(114, 23, 79);
-  width: 30%;
+
   text-decoration: none;
   padding-top: 1vw;
   padding-bottom: 1vw;
-  font-size: var(--font-size);
+  width: 30%;
+
+  background-color: #f93939;
+  color: #fff;
   border-radius: 100px;
+
+  background-image: linear-gradient(
+    45deg,
+    rgba(109, 124, 255, 1) 0%,
+    rgba(147, 109, 255, 1) 57%,
+    rgba(255, 109, 228, 1) 100%
+  );
+  background-size: 300%;
+  background-position: left;
+
+  transition: 300ms background-position ease-in-out;
 }
 .button:hover {
-  /* color: #000000; */
-  background-color: #ca0a5a;
+  background-position: right;
 }
+
+.submit-button {
+  width: 300px;
+  height: auto;
+  padding-top: 0.25vw;
+  padding-bottom: 0.25vw;
+  border-radius: 5px;
+
+  /* display: inline-block;
+  float: left;
+  clear: left; */
+
+  display: table;
+}
+
 #gameBoard {
   display: table;
   display: none;
   margin: 0 auto;
+}
+
+/* forms */
+form {
+  color: white;
+  position: relative;
+  flex-wrap: wrap; /* Optional. only if you want the items to wrap */
+  justify-content: center; /* For horizontal alignment */
+  align-items: center; /* For vertical alignment */
+}
+/* .label {
+  display: inline-block;
+  float: left;
+  clear: left;
+  width: 250px;
+  text-align: left;
+}
+*/
+.input {
+  /* display: inline-block; */
+  /* float: right; */
+}
+p {
+  color: white;
+}
+
+.break {
+  flex-basis: 100%;
+  height: 0vw;
 }

@@ -14,13 +14,13 @@ var joinButton = document.getElementById("joinButton");
 var hostButton = document.getElementById("hostButton");
 
 joinButton.onclick = function () {
-  revealID("joinGame");
+  revealID("joinGame", "flex");
   joinButton.style.display = "none";
   hostButton.style.display = "none";
 };
 
 hostButton.onclick = function () {
-  revealID("hostSettings");
+  revealID("hostSettings", "flex");
 
   joinButton.style.display = "none";
   hostButton.style.display = "none";

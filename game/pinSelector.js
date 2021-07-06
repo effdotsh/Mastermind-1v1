@@ -27,7 +27,7 @@ function displayPinChoices() {
 function mousePressed() {
   let mouseX = mouse()[0];
   let mouseY = mouse()[1];
-  if (gameInProgress) {
+  if (gameInProgress && !fullSent) {
     ////////////////
     // Select pin //
     ////////////////
@@ -117,7 +117,7 @@ function displayPins() {
   ////////////////////
   // Display Checks //
   ////////////////////
-  for (let r = 0; r < currentRow; r++) {
+  for (let r = 0; r < min(currentRow, gameSettings.numGuesses); r++) {
     let check = checkRow(r);
     for (let p = 0; p < check[0] + check[1]; p++) {
       pg.fill(0);
@@ -150,6 +150,13 @@ function displayPins() {
 function keyPressed() {
   if (key === " ") {
     incIfFull();
+
+    if (currentRow >= gameSettings.numGuesses && !fullSent) {
+      fullSent = true;
+      if (!gameSettings.isSinglePlayer) {
+        conn.send({ type: "full", data: {} });
+      }
+    }
   }
 }
 function checkRow(r) {
@@ -207,6 +214,10 @@ function startGame() {
   }
   rematchReceived = false;
   rematchSent = false;
+
+  fullReceived = false;
+  fullSent = false;
+
   timer = -3000;
   resetBoard();
   gameSettings.code = gameSettings.nextCode;

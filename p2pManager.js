@@ -4,8 +4,12 @@ let conn;
 peer.on("open", function (id) {
   document.getElementById("gameCode").innerText = `Connection Code: ${id}`;
 });
+
 let rematchSent = false;
 let rematchReceived = false;
+let fullSent = false;
+let fullReceived = false;
+
 let c_open = () => {
   hideID("gameCode");
   hideID("joinGame");
@@ -36,6 +40,8 @@ let c_open = () => {
     } else if (message.type === "score") {
       gameSettings.myPoints = message.p2;
       gameSettings.theirPoints = message.p1;
+    } else if (message.type === "full") {
+      fullReceived = true;
     }
   });
 };

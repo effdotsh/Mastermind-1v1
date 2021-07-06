@@ -32,6 +32,19 @@ function setup() {
   pg.stroke(0);
 }
 function draw() {
+  if (fullSent) {
+    if (fullReceived) {
+      fullSent = false;
+      alert("Wow... you both suck at this...");
+      endGame();
+    } else if (gameSettings.isSinglePlayer) {
+      alert(
+        "I'm very impressed... I haven't seen anyone fail that bad in years!"
+      );
+      endGame();
+    }
+  }
+
   image(pg, 0, 0, size[0] * scaler, size[1] * scaler);
   pg.background("#c78660");
 

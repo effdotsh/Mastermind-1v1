@@ -139,8 +139,9 @@ function displayPins() {
       if (!gameSettings.isSinglePlayer) {
         conn.send({ type: "done", data: timer });
       }
-      alert(`You Win - Time Elapsed: ${(timer / 1000).toFixed(1)}`);
       gameSettings.myPoints++;
+
+      alert(`You Win - Time Elapsed: ${(timer / 1000).toFixed(1)}`);
 
       endGame();
     }
@@ -197,6 +198,13 @@ function resetBoard() {
 }
 
 function startGame() {
+  if (gameSettings.isHost && !gameSettings.isSinglePlayer) {
+    conn.send({
+      type: "score",
+      p1: gameSettings.myPoints,
+      p2: gameSettings.theirPoints,
+    });
+  }
   rematchReceived = false;
   rematchSent = false;
   timer = -3000;

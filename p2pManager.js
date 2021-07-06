@@ -28,10 +28,14 @@ let c_open = () => {
       resetBoard();
     } else if (message.type === "done") {
       gameSettings.theirPoints++;
+
       alert(`You Lose - Time Elapsed: ${(message.data / 1000).toFixed(1)}`);
       endGame();
     } else if (message.type === "rematch") {
       rematchReceived = true;
+    } else if (message.type === "score") {
+      gameSettings.myPoints = message.p2;
+      gameSettings.theirPoints = message.p1;
     }
   });
 };

@@ -14,12 +14,14 @@ var joinButton = document.getElementById("joinButton");
 var hostButton = document.getElementById("hostButton");
 
 joinButton.onclick = function () {
+  warn();
   revealID("joinGame", "flex");
   joinButton.style.display = "none";
   hostButton.style.display = "none";
 };
 
 hostButton.onclick = function () {
+  warn();
   revealID("hostSettings", "flex");
 
   joinButton.style.display = "none";
@@ -57,4 +59,10 @@ function createCode(len, numColors) {
     code.push(Math.floor(Math.random() * numColors));
   }
   return code;
+}
+
+function warn() {
+  alert(
+    "WARNING: This website uses WebRTC which means it can leak your IP, and it's very easy for your opponent to use cheats. Only play with people you trust, singleplayer, or with a VPN. Stay safe and have fun!"
+  );
 }

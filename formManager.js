@@ -3,12 +3,6 @@ function connectForm() {
   connect(x.gameCode.value);
 }
 
-function sendMessage() {
-  var x = document.getElementById("sendMessage").elements;
-
-  send(x.mssg.value);
-}
-
 document.getElementById("numColors").onkeypress = function (e) {
   var ev = e || window.event;
   if (ev.charCode < 48 || ev.charCode > 57) {

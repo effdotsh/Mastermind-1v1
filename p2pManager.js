@@ -49,8 +49,10 @@ let c_open = () => {
 };
 
 peer.on("connection", function (c) {
-  conn = c;
-  c_open();
+  if (!conn) {
+    conn = c;
+    c_open();
+  }
 });
 
 function connect(destID) {

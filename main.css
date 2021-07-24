@@ -98,3 +98,20 @@ h1 {
 .label {
   color: white;
 }
+
+#connectionCode {
+  background-color: white;
+  color: black;
+  padding-left: 0.2vw;
+  padding-right: 0.2vw;
+  padding-top: 0.1vw;
+  padding-bottom: 0.1vw;
+  font-size: 1.5vw;
+  font-family: "Work Sans", sans-serif;
+  border-radius: 0.3vw;
+  cursor: pointer;
+}
+
+#connectionCode:active {
+  background-color: lightgrey;
+}

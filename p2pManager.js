@@ -1,8 +1,10 @@
-let peer = new Peer();
+let peer = new Peer(makeid(5));
 let conn;
 
 peer.on("open", function (id) {
-  document.getElementById("gameCode").innerText = `Connection Code: ${id}`;
+  document.getElementById(
+    "gameCode"
+  ).innerHTML = `Connection Code: <span id="connectionCode" onclick="copyGameCode()">${id}</span>`;
 });
 
 let rematchSent = false;

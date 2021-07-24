@@ -1,25 +1,17 @@
 body {
   background: #1d1d1d;
   font-family: "Roboto", sans-serif;
-
-  /* 
-  background: linear-gradient(
-    90deg,
-    rgba(34, 40, 49, 1) 0%,
-    rgba(34, 40, 49, 1) 29%,
-    rgba(69, 78, 92, 1) 100%
-  ); */
+  margin: 0;
+  height: 100%;
 }
 
 .header {
   display: inherit;
-  /* margin: 0 auto; */
   padding-bottom: 50px;
   justify-content: space-around;
   width: 100%;
   text-align: center;
   background: #1d1d1d;
-  /* background: white; */
   color: #131313;
 }
 
@@ -29,22 +21,12 @@ body {
 }
 #joinGame {
   display: none;
-  margin: 0 auto;
+  width: 20%;
 }
 
 #hostSettings {
   display: none;
   margin: 0 auto;
-}
-
-.buttons {
-  display: inherit;
-  margin: 0 auto;
-  display: flex;
-  justify-content: space-around;
-  width: 50%;
-  text-align: center;
-  font-size: 1.25vw;
 }
 
 .button {
@@ -54,10 +36,9 @@ body {
   text-decoration: none;
   padding-top: 1vw;
   padding-bottom: 1vw;
-  width: 30%;
+  width: 60%;
 
   background-color: #f93939;
-  border-radius: 100px;
 
   background-image: linear-gradient(
     45deg,
@@ -66,7 +47,6 @@ body {
     #cf291d 100%
   );
   background-size: 300%;
-  background-position: left;
 
   transition: 300ms background-position ease-in-out;
   font-family: "Work Sans", sans-serif;
@@ -83,6 +63,7 @@ body {
   border-radius: 5px;
 
   display: table;
+  margin-top: 1vw;
 }
 
 #gameBoard {
@@ -112,4 +93,8 @@ h1 {
   background: linear-gradient(45deg, #b50717 0%, #cf291d 57%, #b50717 100%);
   font-size: 5vw;
   font-family: "Work Sans", sans-serif;
+}
+
+.label {
+  color: white;
 }

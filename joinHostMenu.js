@@ -15,15 +15,13 @@ var hostButton = document.getElementById("hostButton");
 
 joinButton.onclick = function () {
   revealID("joinGame", "flex");
-  joinButton.style.display = "none";
-  hostButton.style.display = "none";
+  hideID("startMenu");
 };
 
 hostButton.onclick = function () {
   revealID("hostSettings", "flex");
 
-  joinButton.style.display = "none";
-  hostButton.style.display = "none";
+  hideID("startMenu");
   // hostSettings();
 };
 
